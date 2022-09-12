@@ -1,0 +1,44 @@
+set SQL_SAFE_UPDATES = 0;
+
+CREATE DATABASE locadoradeveiculosdb;
+
+USE locadoradeveiculosdb;
+
+create table tbl_carro(
+Placa VARCHAR(20) NOT NULL PRIMARY KEY,
+Categoria VARCHAR(20),
+Número_máximo_de_passageiros INT,
+Tamanho_do_bagageiro VARCHAR(20),
+Tipo_de_câmbio VARCHAR(20),
+Possui_ar_condicionado VARCHAR(5),
+Média_de_consumo INT,
+Acessórios VARCHAR(50),
+Custo_por_dia INT
+);
+CREATE TABLE tbl_cliente(
+CPF varchar(20) not null primary key,
+Nome_completo varchar(50),
+idade int
+);
+create table tbl_aluguel(
+Placa_Carro_Alugado varchar(20),
+CPF_cadastrado varchar(20),
+Nome_Completo varchar(60),
+idade int,
+Local_de_Retirada varchar(20),
+Data_de_Retirada varchar(20),
+Local_de_Devolução varchar(20),
+Data_de_Devolução varchar(20),
+Opcionais varchar(200),
+valor_total_pago int,
+foreign key (Placa_Carro_Alugado) references tbl_carro(Placa),
+foreign key (CPF_cadastrado) references tbl_cliente(CPF)
+);
+
+
+INSERT INTO tbl_carro VALUES("IJG-2345","Compacto",1,"Pequeno","Manual","Não",5,"Airbag, DVD",100);
+INSERT INTO tbl_carro VALUES("ASD-6265","Grande",7,"Gradne","Automático","Sim",10,"Airbag, FreioABS, DVD",200);
+INSERT INTO tbl_carro VALUES("DAS-3121","Premium",1,"Pequeno","Automático","Sim",12,"Airbag, FreiosABS",150);
+INSERT INTO tbl_cliente VALUES("01740705267","Adalberto carlos ferreira",30);
+INSERT INTO tbl_cliente VALUES("01124042434","Maria da conceição aparecida",55);
+INSERT INTO tbl_cliente VALUES("04312341234","Enzo matehus albuquerque",20);
